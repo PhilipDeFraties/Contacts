@@ -8,6 +8,8 @@ const ListContacts = ({ contacts, onDeleteContact }) => {
         setQuery(query.trim());
     }
 
+    const showingContacts = query === "" ? contacts : contacts.filter((contact) => contact.name.toLowerCase().includes(query.toLowerCase()))
+
     return (
         <div className="list-contacts">
             <div className="list-contacts-top">
@@ -20,7 +22,7 @@ const ListContacts = ({ contacts, onDeleteContact }) => {
                 />
             </div>
             <ol className="contact-list">
-                {contacts.map((contact) => (
+                {showingContacts.map((contact) => (
                     <li key={contact.id} className="contact-list-item">
                         <div 
                             className="contact-avatar" 
