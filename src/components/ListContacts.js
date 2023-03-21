@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const ListContacts = ({ contacts, onDeleteContact }) => {
     const [query, setQuery] = useState("");
@@ -12,8 +12,12 @@ const ListContacts = ({ contacts, onDeleteContact }) => {
         updateQuery("");
     }
     
-
-    const showingContacts = query === "" ? contacts : contacts.filter((contact) => contact.name.toLowerCase().includes(query.toLowerCase()))
+    const showingContacts = 
+        query === "" 
+            ? contacts 
+            : contacts.filter((contact) => 
+                contact.name.toLowerCase().includes(query.toLowerCase())
+              );
 
     return (
         <div className="list-contacts">
@@ -25,6 +29,13 @@ const ListContacts = ({ contacts, onDeleteContact }) => {
                     value={query}
                     onChange={(event) => updateQuery(event.target.value)}
                 />
+                <Link 
+                    to="/create"
+                    state={{ fromListContacts: true, name: query }}
+                    className="add-contact"
+                >
+                    Add Contact
+                </Link>
             </div>
 
         {
