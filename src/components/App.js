@@ -24,11 +24,12 @@ const App = () => {
 
   const createContact = (contact) => {
     const create = async () => {
-      const res = await ContactsAPI.create(contact)
-      setContacts(contacts.concat(res))
+      const res = await ContactsAPI.create(contact);
+      setContacts(contacts.concat(res));
     }
 
     create();
+    navigate("/");
   }
 
   return (
