@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router-dom"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useNavigate } from "react";
 import "../css/App.css";
 import ListContacts from "./ListContacts";
 import CreateContact from "./CreateContact";
 import * as ContactsAPI from "../utils/ContactsAPI";
 
 const App = () => {
+  const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
