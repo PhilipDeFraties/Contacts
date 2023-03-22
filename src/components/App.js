@@ -23,8 +23,12 @@ const App = () => {
   };
 
   const createContact = (contact) => {
-    const res = ContactsAPI.add(contact)
-    setContacts(contacts.concat(res))
+    const create = async () => {
+      const res = await ContactsAPI.create(contact)
+      setContacts(contacts.concat(res))
+    }
+
+    create();
   }
 
   return (
