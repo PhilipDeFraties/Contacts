@@ -22,12 +22,17 @@ const App = () => {
     setContacts(contacts.filter(c => c.id !== contact.id));
   };
 
+  const createContact = (contact) => {
+    const res = ContactsAPI.add(contact)
+    setContacts(contacts.concat(res))
+  }
+
   return (
     <Routes>
       <Route exact path="/" element={
          <ListContacts contacts={contacts} onDeleteContact={removeContact}/>
         }/>
-      <Route path="/create" element={ <CreateContact /> } />
+      <Route path="/create" element={ <CreateContact onCreateContact={createContact}/> } />
     </Routes>
   )
 };
